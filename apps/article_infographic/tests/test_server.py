@@ -1,11 +1,9 @@
 import threading
 import urllib.request
-from pathlib import Path
 
 import pytest
+from _paths import TRIAL
 from article_infographic.server import make_server
-
-TRIAL = Path(__file__).parent / "data" / "sertraline_trial.md"
 
 
 @pytest.fixture

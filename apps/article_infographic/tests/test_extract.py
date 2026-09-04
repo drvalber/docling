@@ -1,17 +1,12 @@
-from pathlib import Path
-
 import pytest
+from _paths import DOCLING_ARTICLE, TRIAL
 from article_infographic.extract import extract_article, parse_authors
 from article_infographic.models import SectionKind
-
-REPO = Path(__file__).resolve().parents[3]
-DOCLAYNET = REPO / "tests" / "data" / "pdf" / "groundtruth" / "2206.01062.json"
-TRIAL = Path(__file__).parent / "data" / "sertraline_trial.md"
 
 
 @pytest.fixture(scope="module")
 def doclaynet():
-    return extract_article(DOCLAYNET)
+    return extract_article(DOCLING_ARTICLE)
 
 
 @pytest.fixture(scope="module")

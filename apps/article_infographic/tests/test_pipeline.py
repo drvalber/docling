@@ -1,11 +1,10 @@
 import json
 from pathlib import Path
 
+from _paths import TRIAL
 from article_infographic.cli import main
 from article_infographic.models import ChartKind, InfographicSpec
 from article_infographic.pipeline import build_infographic, render_from_spec
-
-TRIAL = Path(__file__).parent / "data" / "sertraline_trial.md"
 
 
 def test_heuristic_build_from_markdown_trial(tmp_path):

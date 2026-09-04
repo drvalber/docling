@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 
-SRC = Path(__file__).resolve().parents[1] / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+TESTS = Path(__file__).resolve().parent
+SRC = TESTS.parents[0] / "src"
+for path in (SRC, TESTS):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
