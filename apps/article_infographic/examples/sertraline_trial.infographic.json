@@ -1,0 +1,239 @@
+{
+  "language": "pt",
+  "headline": "Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial",
+  "subtitle": "Ensaio clínico randomizado · Journal of Affective Disorders · 2024",
+  "one_sentence_summary": "Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated.",
+  "reference": "Ana Beatriz Moreira, Carlos Eduardo Lima, Fernanda Ribeiro Santos, João Pedro Almeida. Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial. Journal of Affective Disorders. 2024. doi:10.1016/j.jad.2024.00001",
+  "citation_short": "Moreira et al. (2024)",
+  "metadata": {
+    "title": "Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial",
+    "authors": [
+      "Ana Beatriz Moreira",
+      "Carlos Eduardo Lima",
+      "Fernanda Ribeiro Santos",
+      "João Pedro Almeida"
+    ],
+    "journal": "Journal of Affective Disorders",
+    "year": "2024",
+    "doi": "10.1016/j.jad.2024.00001",
+    "keywords": [
+      "late-life depression",
+      "sertraline",
+      "primary care",
+      "randomized controlled trial"
+    ],
+    "source_file": "sertraline_trial.md",
+    "page_count": 0
+  },
+  "stat_tiles": [
+    {
+      "value": "312",
+      "label": "Amostra",
+      "context": ""
+    },
+    {
+      "value": "p < 0.001",
+      "label": "Significância",
+      "context": "At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points…"
+    },
+    {
+      "value": "OR = 2.7",
+      "label": "Tamanho de efeito",
+      "context": "Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR =…"
+    },
+    {
+      "value": "95% CI 1.6 to 4.5",
+      "label": "Intervalo de confiança",
+      "context": "Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR =…"
+    }
+  ],
+  "study_design": {
+    "design": "Ensaio clínico randomizado",
+    "population": "Participants were adults aged 65 years or older with a diagnosis of major depressive disorder and a baseline HAM-D score of at least 14.",
+    "sample_size": "n = 312",
+    "intervention": "Patients received sertraline 50 mg daily, titrated to 100 mg at week 4 if tolerated, or matching placebo.",
+    "comparator": "We conducted a double-blind, placebo-controlled randomized trial in 14 primary care units of a public health network.",
+    "outcomes": "The primary outcome was the change in HAM-D score from baseline to week 12.",
+    "follow_up": "Follow-up visits occurred at weeks 4, 8 and 12.",
+    "setting": ""
+  },
+  "flow": [
+    {
+      "label": "Pergunta",
+      "detail": "We aimed to determine whether sertraline is superior to placebo over 12 weeks."
+    },
+    {
+      "label": "Desenho",
+      "detail": "Ensaio clínico randomizado"
+    },
+    {
+      "label": "Amostra",
+      "detail": "n = 312"
+    },
+    {
+      "label": "Intervenção / Análise",
+      "detail": "Patients received sertraline 50 mg daily, titrated to 100 mg at week 4 if tolerated, or matching placebo."
+    },
+    {
+      "label": "Resultados",
+      "detail": "At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points with placebo (mean difference −4.1, 95% CI −5.6 to −2.6; p < 0.001)."
+    },
+    {
+      "label": "Conclusão",
+      "detail": "Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated."
+    }
+  ],
+  "mechanism": [],
+  "key_findings": [
+    {
+      "title": "At week 12, HAM-D scores fell by 9.8 ±…",
+      "detail": "At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points with placebo (mean difference −4.1, 95% CI −5.6 to −2.6; p < 0.001).",
+      "stat": "p < 0.001"
+    },
+    {
+      "title": "Response was achieved by 58% of the sertraline group…",
+      "detail": "Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR = 2.7, 95% CI 1.6 to 4.5; p < 0.001).",
+      "stat": "p < 0.001"
+    },
+    {
+      "title": "Remission occurred in 41% versus 22% (OR = 2.5,…",
+      "detail": "Remission occurred in 41% versus 22% (OR = 2.5, 95% CI 1.5 to 4.2; p = 0.001).",
+      "stat": "p = 0.001"
+    },
+    {
+      "title": "Anxiety improved modestly (GAD-7 mean difference −1.9, 95% CI…",
+      "detail": "Anxiety improved modestly (GAD-7 mean difference −1.9, 95% CI −3.0 to −0.8; p = 0.001).",
+      "stat": "p = 0.001"
+    },
+    {
+      "title": "Discontinuation due to adverse events was 6% with sertraline…",
+      "detail": "Discontinuation due to adverse events was 6% with sertraline and 4% with placebo (p = 0.42).",
+      "stat": "p = 0.42"
+    }
+  ],
+  "charts": [
+    {
+      "kind": "bar",
+      "title": "Dados da Tabela 1",
+      "categories": [
+        "Response (%)",
+        "Remission (%)",
+        "Discontinuation (%)",
+        "Nausea (%)"
+      ],
+      "series": [
+        {
+          "name": "Sertraline",
+          "values": [
+            58.0,
+            41.0,
+            6.0,
+            18.0
+          ],
+          "lower": null,
+          "upper": null
+        },
+        {
+          "name": "Placebo",
+          "values": [
+            34.0,
+            22.0,
+            4.0,
+            9.0
+          ],
+          "lower": null,
+          "upper": null
+        }
+      ],
+      "unit": "",
+      "source": "Tabela 1",
+      "note": "",
+      "null_value": null
+    },
+    {
+      "kind": "dumbbell",
+      "title": "Dados da Tabela 2",
+      "categories": [
+        "Sertraline",
+        "Placebo"
+      ],
+      "series": [
+        {
+          "name": "Baseline",
+          "values": [
+            21.4,
+            21.1
+          ],
+          "lower": null,
+          "upper": null
+        },
+        {
+          "name": "Week 12",
+          "values": [
+            11.6,
+            15.4
+          ],
+          "lower": null,
+          "upper": null
+        }
+      ],
+      "unit": "",
+      "source": "Tabela 2",
+      "note": "",
+      "null_value": null
+    },
+    {
+      "kind": "forest",
+      "title": "OR (95% CI)",
+      "categories": [
+        "Response",
+        "Remission",
+        "Discontinuation"
+      ],
+      "series": [
+        {
+          "name": "OR (95% CI)",
+          "values": [
+            2.7,
+            2.5,
+            1.5
+          ],
+          "lower": [
+            1.6,
+            1.5,
+            0.6
+          ],
+          "upper": [
+            4.5,
+            4.2,
+            3.9
+          ]
+        }
+      ],
+      "unit": "",
+      "source": "Tabela 3",
+      "note": "OR (95% CI) (IC 95%)",
+      "null_value": 1.0
+    }
+  ],
+  "takeaways": [
+    "Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated.",
+    "Longer trials should evaluate relapse prevention and outcomes in patients with cognitive impairment."
+  ],
+  "clinical_implications": [
+    "Sertraline produced a clinically meaningful reduction in depressive symptoms compared with placebo in older primary care patients.",
+    "In clinical practice, the results support sertraline as a first-line option for late-life depression when psychotherapy is unavailable."
+  ],
+  "limitations": [
+    "Limitations include the exclusion of patients with dementia, which limits generalizability, and the relatively short 12-week follow-up."
+  ],
+  "glossary": {},
+  "keywords": [
+    "late-life depression",
+    "sertraline",
+    "primary care",
+    "randomized controlled trial"
+  ],
+  "generated_by": "heuristic",
+  "warnings": []
+}

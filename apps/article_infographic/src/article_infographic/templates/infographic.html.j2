@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="{{ 'pt-BR' if spec.language == 'pt' else spec.language }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ spec.headline }}</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f4f4f1;
+  --surface: #fcfcfb;
+  --surface-2: #f0efec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --accent: #2a78d6;
+  --accent-soft: #cde2fb;
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100;
+  --series-5: #e87ba4; --series-6: #008300; --series-7: #4a3aa7; --series-8: #e34948;
+  --warn: #fab219;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232322;
+    --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --accent: #3987e5; --accent-soft: #184f95;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+    --series-5: #d55181; --series-6: #008300; --series-7: #9085e9; --series-8: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232322;
+  --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --accent: #3987e5; --accent-soft: #184f95;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+  --series-5: #d55181; --series-6: #008300; --series-7: #9085e9; --series-8: #e66767;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 15px; line-height: 1.45; }
+a { color: var(--accent); }
+.poster { max-width: 1180px; margin: 0 auto; padding: 24px 20px 48px; }
+.toolbar { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 12px; }
+.toolbar button { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.toolbar button:hover { color: var(--ink); border-color: var(--accent); }
+
+header.hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px 32px; position: relative; overflow: hidden; }
+header.hero::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; background: var(--accent); }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+h1 { font-size: clamp(24px, 3.2vw, 38px); line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.01em; }
+.subtitle { font-size: 17px; color: var(--ink-2); margin: 0 0 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--border); }
+.chip strong { color: var(--ink); font-weight: 600; }
+
+.callout { margin: 16px 0 0; padding: 18px 22px; border-radius: var(--radius); background: var(--accent-soft);
+  color: var(--ink); font-size: 18px; line-height: 1.4; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+.callout .k { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); padding-top: 6px; white-space: nowrap; }
+
+section { margin-top: 18px; }
+h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--grid); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; break-inside: avoid; }
+.grid { display: grid; gap: 14px; }
+.grid > * { min-width: 0; overflow-wrap: anywhere; }
+.grid.kpi { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+.grid.three { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.tile .v { font-size: 34px; font-weight: 650; line-height: 1.1; letter-spacing: -0.02em; }
+.tile .l { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin-top: 4px; }
+.tile .c { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+
+.pico { display: grid; grid-template-columns: 1fr; gap: 0; }
+.pico .row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; overflow-wrap: anywhere; padding: 8px 0; border-top: 1px solid var(--grid); font-size: 14px; }
+.pico .row:first-child { border-top: 0; }
+.pico .row .k { color: var(--ink-3); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding-top: 2px; }
+
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; counter-reset: step; }
+.flow .step { position: relative; background: var(--surface-2); border-radius: 12px; padding: 12px 12px 12px 14px; font-size: 13px; counter-increment: step; border-left: 4px solid var(--series-1); }
+.flow .step:nth-child(2) { border-left-color: var(--series-2); }
+.flow .step:nth-child(3) { border-left-color: var(--series-3); }
+.flow .step:nth-child(4) { border-left-color: var(--series-4); }
+.flow .step:nth-child(5) { border-left-color: var(--series-5); }
+.flow .step:nth-child(6) { border-left-color: var(--series-6); }
+.flow .step:nth-child(7) { border-left-color: var(--series-7); }
+.flow .step .n { font-size: 11px; color: var(--ink-3); letter-spacing: .1em; text-transform: uppercase; }
+.flow .step .n::before { content: counter(step) " · "; }
+.flow .step .t { font-weight: 600; margin: 2px 0 4px; }
+.flow .step .d { color: var(--ink-2); }
+
+.mech { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.mech .node { flex: 1 1 160px; background: var(--surface); border: 1.5px solid var(--accent); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+.mech .node .t { font-weight: 600; }
+.mech .node .d { color: var(--ink-2); }
+.mech .arrow { align-self: center; color: var(--ink-3); font-size: 20px; }
+
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.finding { display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.finding .n { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 15px; }
+.finding .t { font-weight: 650; margin-bottom: 4px; }
+.finding .d { color: var(--ink-2); font-size: 14px; }
+.finding .s { display: inline-block; margin-top: 8px; font-size: 12.5px; font-variant-numeric: tabular-nums; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border); }
+
+.chart-card h3 { font-size: 15px; margin: 0 0 2px; }
+.chart-card .src { font-size: 12px; color: var(--ink-3); margin-bottom: 8px; }
+.chart-card svg { width: 100%; height: auto; display: block; }
+.chart-card details { margin-top: 8px; font-size: 12.5px; color: var(--ink-2); }
+.chart-card summary { cursor: pointer; }
+table.data { border-collapse: collapse; width: 100%; margin-top: 6px; font-variant-numeric: tabular-nums; }
+table.data th, table.data td { text-align: left; padding: 4px 6px; border-top: 1px solid var(--grid); }
+.mark:hover { filter: brightness(1.15); }
+
+ul.list { margin: 0; padding-left: 20px; }
+ul.list li { margin: 6px 0; }
+ul.big li { font-size: 16px; font-weight: 500; }
+.glossary dt { font-weight: 600; margin-top: 8px; }
+.glossary dd { margin: 0; color: var(--ink-2); font-size: 14px; }
+
+.reference { font-size: 14px; }
+.reference .cite { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--surface-2); padding: 10px 12px; border-radius: 8px; word-break: break-word; }
+.warn { border-left: 4px solid var(--warn); }
+footer { margin-top: 20px; font-size: 12px; color: var(--ink-3); text-align: center; }
+
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--page); font-size: 12px; padding: 5px 8px; border-radius: 6px; display: none; z-index: 10; max-width: 280px; }
+
+@media print {
+  @page { size: A3 portrait; margin: 10mm; }
+  html, body { background: #fff; color: #0b0b0b; }
+  .toolbar, #tip { display: none !important; }
+  .poster { max-width: none; padding: 0; }
+  .card, .step, .finding { break-inside: avoid; }
+  section { break-inside: avoid-page; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<div id="tip"></div>
+<div class="poster">
+  <div class="toolbar">
+    <button type="button" id="theme">{{ ui.theme }}</button>
+    <button type="button" onclick="window.print()">{{ ui.print }}</button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">{{ spec.citation_short }}{% if spec.metadata.journal %} · {{ spec.metadata.journal }}{% endif %}</p>
+    <h1>{{ spec.headline }}</h1>
+    {% if spec.subtitle %}<p class="subtitle">{{ spec.subtitle }}</p>{% endif %}
+    <div class="chips">
+      {% if spec.metadata.authors %}<span class="chip"><strong>{{ ui.authors }}:</strong> {{ spec.metadata.authors[:6] | join(', ') }}{% if spec.metadata.authors | length > 6 %} et al.{% endif %}</span>{% endif %}
+      {% if spec.metadata.year %}<span class="chip">{{ spec.metadata.year }}</span>{% endif %}
+      {% if spec.metadata.page_count %}<span class="chip">{{ spec.metadata.page_count }} {{ ui.pages }}</span>{% endif %}
+      {% if doi_url %}<span class="chip"><a href="{{ doi_url }}">doi:{{ spec.metadata.doi }}</a></span>{% endif %}
+      {% for kw in spec.keywords[:6] %}<span class="chip">{{ kw }}</span>{% endfor %}
+    </div>
+    {% if spec.one_sentence_summary %}
+    <div class="callout"><span class="k">{{ ui.in_one_sentence }}</span><span>{{ spec.one_sentence_summary }}</span></div>
+    {% endif %}
+  </header>
+
+  {% if spec.stat_tiles %}
+  <section>
+    <div class="grid kpi">
+      {% for tile in spec.stat_tiles %}
+      <div class="card tile">
+        <div class="v">{{ tile.value }}</div>
+        <div class="l">{{ tile.label }}</div>
+        {% if tile.context %}<div class="c">{{ tile.context }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section>
+    <div class="grid two">
+      {% if pico %}
+      <div class="card">
+        <h2>{{ ui.design }}</h2>
+        <div class="pico">
+          {% for label, value in pico %}
+          <div class="row"><div class="k">{{ label }}</div><div>{{ value }}</div></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if spec.key_findings %}
+      <div class="card">
+        <h2>{{ ui.findings }}</h2>
+        <div class="findings" style="grid-template-columns: 1fr">
+          {% for f in spec.key_findings %}
+          <div class="finding">
+            <div class="n">{{ loop.index }}</div>
+            <div>
+              <div class="t">{{ f.title }}</div>
+              <div class="d">{{ f.detail }}</div>
+              {% if f.stat %}<span class="s">{{ f.stat }}</span>{% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if spec.flow %}
+  <section>
+    <h2>{{ ui.flow }}</h2>
+    <div class="flow">
+      {% for step in spec.flow %}
+      <div class="step"><div class="n"></div><div class="t">{{ step.label }}</div><div class="d">{{ step.detail }}</div></div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if spec.mechanism %}
+  <section>
+    <h2>{{ ui.mechanism }}</h2>
+    <div class="mech">
+      {% for node in spec.mechanism %}
+      <div class="node"><div class="t">{{ node.label }}</div>{% if node.detail %}<div class="d">{{ node.detail }}</div>{% endif %}</div>
+      {% if not loop.last %}<div class="arrow">→</div>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if charts %}
+  <section>
+    <h2>{{ ui.charts }}</h2>
+    <div class="grid two">
+      {% for c in charts %}
+      <div class="card chart-card">
+        <h3>{{ c.spec.title }}</h3>
+        <div class="src">{% if c.spec.source %}{{ ui.source }}: {{ c.spec.source }}{% endif %}{% if c.spec.note %} · {{ c.spec.note }}{% endif %}</div>
+        {{ c.svg | safe }}
+        <details><summary>{{ ui.data_table }}</summary>{{ c.table | safe }}</details>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section>
+    <div class="grid three">
+      {% if spec.takeaways %}
+      <div class="card">
+        <h2>{{ ui.takeaways }}</h2>
+        <ul class="list big">{% for t in spec.takeaways %}<li>{{ t }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% if spec.clinical_implications %}
+      <div class="card">
+        <h2>{{ ui.clinical }}</h2>
+        <ul class="list">{% for t in spec.clinical_implications %}<li>{{ t }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% if spec.limitations %}
+      <div class="card">
+        <h2>{{ ui.limitations }}</h2>
+        <ul class="list">{% for t in spec.limitations %}<li>{{ t }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if spec.glossary %}
+  <section>
+    <div class="card">
+      <h2>{{ ui.glossary }}</h2>
+      <dl class="glossary grid two">
+        {% for term, definition in spec.glossary.items() %}
+        <div><dt>{{ term }}</dt><dd>{{ definition }}</dd></div>
+        {% endfor %}
+      </dl>
+    </div>
+  </section>
+  {% endif %}
+
+  <section>
+    <div class="card reference">
+      <h2>{{ ui.reference }}</h2>
+      <div class="cite">{{ spec.reference or spec.metadata.title }}</div>
+      {% if doi_url %}<p><a href="{{ doi_url }}">{{ doi_url }}</a></p>{% endif %}
+    </div>
+  </section>
+
+  {% if spec.warnings %}
+  <section>
+    <div class="card warn">
+      <h2>{{ ui.warnings }}</h2>
+      <ul class="list">{% for w in spec.warnings %}<li>{{ w }}</li>{% endfor %}</ul>
+    </div>
+  </section>
+  {% endif %}
+
+  <footer>
+    {{ ui.generated }} {{ generated_at }} · {{ ui.backend }}: {{ spec.generated_by }} · Docling<br>
+    {{ ui.disclaimer }}
+  </footer>
+</div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  document.querySelectorAll('.mark').forEach(function (el) {
+    var title = el.querySelector('title');
+    if (!title) return;
+    var text = title.textContent;
+    el.addEventListener('mousemove', function (e) {
+      tip.textContent = text; tip.style.display = 'block';
+      tip.style.left = (e.clientX + 12) + 'px'; tip.style.top = (e.clientY + 12) + 'px';
+    });
+    el.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  });
+  var root = document.documentElement;
+  var btn = document.getElementById('theme');
+  try { var saved = localStorage.getItem('infographic-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('infographic-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

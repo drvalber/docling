@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f4f4f1;
+  --surface: #fcfcfb;
+  --surface-2: #f0efec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-3: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --accent: #2a78d6;
+  --accent-soft: #cde2fb;
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100;
+  --series-5: #e87ba4; --series-6: #008300; --series-7: #4a3aa7; --series-8: #e34948;
+  --warn: #fab219;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232322;
+    --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --accent: #3987e5; --accent-soft: #184f95;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+    --series-5: #d55181; --series-6: #008300; --series-7: #9085e9; --series-8: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --surface-2: #232322;
+  --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --accent: #3987e5; --accent-soft: #184f95;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+  --series-5: #d55181; --series-6: #008300; --series-7: #9085e9; --series-8: #e66767;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 15px; line-height: 1.45; }
+a { color: var(--accent); }
+.poster { max-width: 1180px; margin: 0 auto; padding: 24px 20px 48px; }
+.toolbar { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 12px; }
+.toolbar button { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.toolbar button:hover { color: var(--ink); border-color: var(--accent); }
+
+header.hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px 32px; position: relative; overflow: hidden; }
+header.hero::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; background: var(--accent); }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+h1 { font-size: clamp(24px, 3.2vw, 38px); line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.01em; }
+.subtitle { font-size: 17px; color: var(--ink-2); margin: 0 0 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--border); }
+.chip strong { color: var(--ink); font-weight: 600; }
+
+.callout { margin: 16px 0 0; padding: 18px 22px; border-radius: var(--radius); background: var(--accent-soft);
+  color: var(--ink); font-size: 18px; line-height: 1.4; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+.callout .k { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); padding-top: 6px; white-space: nowrap; }
+
+section { margin-top: 18px; }
+h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--grid); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; break-inside: avoid; }
+.grid { display: grid; gap: 14px; }
+.grid > * { min-width: 0; overflow-wrap: anywhere; }
+.grid.kpi { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+.grid.three { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.tile .v { font-size: 34px; font-weight: 650; line-height: 1.1; letter-spacing: -0.02em; }
+.tile .l { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin-top: 4px; }
+.tile .c { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+
+.pico { display: grid; grid-template-columns: 1fr; gap: 0; }
+.pico .row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; overflow-wrap: anywhere; padding: 8px 0; border-top: 1px solid var(--grid); font-size: 14px; }
+.pico .row:first-child { border-top: 0; }
+.pico .row .k { color: var(--ink-3); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding-top: 2px; }
+
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; counter-reset: step; }
+.flow .step { position: relative; background: var(--surface-2); border-radius: 12px; padding: 12px 12px 12px 14px; font-size: 13px; counter-increment: step; border-left: 4px solid var(--series-1); }
+.flow .step:nth-child(2) { border-left-color: var(--series-2); }
+.flow .step:nth-child(3) { border-left-color: var(--series-3); }
+.flow .step:nth-child(4) { border-left-color: var(--series-4); }
+.flow .step:nth-child(5) { border-left-color: var(--series-5); }
+.flow .step:nth-child(6) { border-left-color: var(--series-6); }
+.flow .step:nth-child(7) { border-left-color: var(--series-7); }
+.flow .step .n { font-size: 11px; color: var(--ink-3); letter-spacing: .1em; text-transform: uppercase; }
+.flow .step .n::before { content: counter(step) " · "; }
+.flow .step .t { font-weight: 600; margin: 2px 0 4px; }
+.flow .step .d { color: var(--ink-2); }
+
+.mech { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.mech .node { flex: 1 1 160px; background: var(--surface); border: 1.5px solid var(--accent); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+.mech .node .t { font-weight: 600; }
+.mech .node .d { color: var(--ink-2); }
+.mech .arrow { align-self: center; color: var(--ink-3); font-size: 20px; }
+
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.finding { display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.finding .n { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 15px; }
+.finding .t { font-weight: 650; margin-bottom: 4px; }
+.finding .d { color: var(--ink-2); font-size: 14px; }
+.finding .s { display: inline-block; margin-top: 8px; font-size: 12.5px; font-variant-numeric: tabular-nums; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border); }
+
+.chart-card h3 { font-size: 15px; margin: 0 0 2px; }
+.chart-card .src { font-size: 12px; color: var(--ink-3); margin-bottom: 8px; }
+.chart-card svg { width: 100%; height: auto; display: block; }
+.chart-card details { margin-top: 8px; font-size: 12.5px; color: var(--ink-2); }
+.chart-card summary { cursor: pointer; }
+table.data { border-collapse: collapse; width: 100%; margin-top: 6px; font-variant-numeric: tabular-nums; }
+table.data th, table.data td { text-align: left; padding: 4px 6px; border-top: 1px solid var(--grid); }
+.mark:hover { filter: brightness(1.15); }
+
+ul.list { margin: 0; padding-left: 20px; }
+ul.list li { margin: 6px 0; }
+ul.big li { font-size: 16px; font-weight: 500; }
+.glossary dt { font-weight: 600; margin-top: 8px; }
+.glossary dd { margin: 0; color: var(--ink-2); font-size: 14px; }
+
+.reference { font-size: 14px; }
+.reference .cite { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--surface-2); padding: 10px 12px; border-radius: 8px; word-break: break-word; }
+.warn { border-left: 4px solid var(--warn); }
+footer { margin-top: 20px; font-size: 12px; color: var(--ink-3); text-align: center; }
+
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--page); font-size: 12px; padding: 5px 8px; border-radius: 6px; display: none; z-index: 10; max-width: 280px; }
+
+@media print {
+  @page { size: A3 portrait; margin: 10mm; }
+  html, body { background: #fff; color: #0b0b0b; }
+  .toolbar, #tip { display: none !important; }
+  .poster { max-width: none; padding: 0; }
+  .card, .step, .finding { break-inside: avoid; }
+  section { break-inside: avoid-page; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<div id="tip"></div>
+<div class="poster">
+  <div class="toolbar">
+    <button type="button" id="theme">Tema</button>
+    <button type="button" onclick="window.print()">Imprimir / PDF</button>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Moreira et al. (2024) · Journal of Affective Disorders</p>
+    <h1>Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial</h1>
+<p class="subtitle">Ensaio clínico randomizado · Journal of Affective Disorders · 2024</p>    <div class="chips">
+<span class="chip"><strong>Autores:</strong> Ana Beatriz Moreira, Carlos Eduardo Lima, Fernanda Ribeiro Santos, João Pedro Almeida</span><span class="chip">2024</span><span class="chip"><a href="https://doi.org/10.1016/j.jad.2024.00001">doi:10.1016/j.jad.2024.00001</a></span><span class="chip">late-life depression</span><span class="chip">sertraline</span><span class="chip">primary care</span><span class="chip">randomized controlled trial</span>    </div>
+    <div class="callout"><span class="k">Em uma frase</span><span>Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated.</span></div>
+  </header>
+
+  <section>
+    <div class="grid kpi">
+      <div class="card tile">
+        <div class="v">312</div>
+        <div class="l">Amostra</div>
+      </div>
+      <div class="card tile">
+        <div class="v">p &lt; 0.001</div>
+        <div class="l">Significância</div>
+<div class="c">At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points…</div>      </div>
+      <div class="card tile">
+        <div class="v">OR = 2.7</div>
+        <div class="l">Tamanho de efeito</div>
+<div class="c">Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR =…</div>      </div>
+      <div class="card tile">
+        <div class="v">95% CI 1.6 to 4.5</div>
+        <div class="l">Intervalo de confiança</div>
+<div class="c">Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR =…</div>      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid two">
+      <div class="card">
+        <h2>Desenho do estudo</h2>
+        <div class="pico">
+          <div class="row"><div class="k">Desenho do estudo</div><div>Ensaio clínico randomizado</div></div>
+          <div class="row"><div class="k">População</div><div>Participants were adults aged 65 years or older with a diagnosis of major depressive disorder and a baseline HAM-D score of at least 14.</div></div>
+          <div class="row"><div class="k">Amostra</div><div>n = 312</div></div>
+          <div class="row"><div class="k">Intervenção / Exposição</div><div>Patients received sertraline 50 mg daily, titrated to 100 mg at week 4 if tolerated, or matching placebo.</div></div>
+          <div class="row"><div class="k">Comparador</div><div>We conducted a double-blind, placebo-controlled randomized trial in 14 primary care units of a public health network.</div></div>
+          <div class="row"><div class="k">Desfechos</div><div>The primary outcome was the change in HAM-D score from baseline to week 12.</div></div>
+          <div class="row"><div class="k">Seguimento</div><div>Follow-up visits occurred at weeks 4, 8 and 12.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Principais achados</h2>
+        <div class="findings" style="grid-template-columns: 1fr">
+          <div class="finding">
+            <div class="n">1</div>
+            <div>
+              <div class="t">At week 12, HAM-D scores fell by 9.8 ±…</div>
+              <div class="d">At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points with placebo (mean difference −4.1, 95% CI −5.6 to −2.6; p &lt; 0.001).</div>
+<span class="s">p &lt; 0.001</span>            </div>
+          </div>
+          <div class="finding">
+            <div class="n">2</div>
+            <div>
+              <div class="t">Response was achieved by 58% of the sertraline group…</div>
+              <div class="d">Response was achieved by 58% of the sertraline group and 34% of the placebo group (OR = 2.7, 95% CI 1.6 to 4.5; p &lt; 0.001).</div>
+<span class="s">p &lt; 0.001</span>            </div>
+          </div>
+          <div class="finding">
+            <div class="n">3</div>
+            <div>
+              <div class="t">Remission occurred in 41% versus 22% (OR = 2.5,…</div>
+              <div class="d">Remission occurred in 41% versus 22% (OR = 2.5, 95% CI 1.5 to 4.2; p = 0.001).</div>
+<span class="s">p = 0.001</span>            </div>
+          </div>
+          <div class="finding">
+            <div class="n">4</div>
+            <div>
+              <div class="t">Anxiety improved modestly (GAD-7 mean difference −1.9, 95% CI…</div>
+              <div class="d">Anxiety improved modestly (GAD-7 mean difference −1.9, 95% CI −3.0 to −0.8; p = 0.001).</div>
+<span class="s">p = 0.001</span>            </div>
+          </div>
+          <div class="finding">
+            <div class="n">5</div>
+            <div>
+              <div class="t">Discontinuation due to adverse events was 6% with sertraline…</div>
+              <div class="d">Discontinuation due to adverse events was 6% with sertraline and 4% with placebo (p = 0.42).</div>
+<span class="s">p = 0.42</span>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fluxo do estudo</h2>
+    <div class="flow">
+      <div class="step"><div class="n"></div><div class="t">Pergunta</div><div class="d">We aimed to determine whether sertraline is superior to placebo over 12 weeks.</div></div>
+      <div class="step"><div class="n"></div><div class="t">Desenho</div><div class="d">Ensaio clínico randomizado</div></div>
+      <div class="step"><div class="n"></div><div class="t">Amostra</div><div class="d">n = 312</div></div>
+      <div class="step"><div class="n"></div><div class="t">Intervenção / Análise</div><div class="d">Patients received sertraline 50 mg daily, titrated to 100 mg at week 4 if tolerated, or matching placebo.</div></div>
+      <div class="step"><div class="n"></div><div class="t">Resultados</div><div class="d">At week 12, HAM-D scores fell by 9.8 ± 5.2 points with sertraline and 5.7 ± 5.4 points with placebo (mean difference −4.1, 95% CI −5.6 to −2.6; p &lt; 0.001).</div></div>
+      <div class="step"><div class="n"></div><div class="t">Conclusão</div><div class="d">Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated.</div></div>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>Dados em gráficos</h2>
+    <div class="grid two">
+      <div class="card chart-card">
+        <h3>Dados da Tabela 1</h3>
+        <div class="src">Fonte: Tabela 1</div>
+        <svg class="chart" viewBox="0 0 640 208" role="img" aria-label="Dados da Tabela 1" xmlns="http://www.w3.org/2000/svg"><line x1="147.7" y1="32" x2="147.7" y2="182" stroke="var(--grid)" stroke-width="1"/><text x="147.7" y="198" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">0</text><line x1="253.3" y1="32" x2="253.3" y2="182" stroke="var(--grid)" stroke-width="1"/><text x="253.3" y="198" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">25</text><line x1="358.8" y1="32" x2="358.8" y2="182" stroke="var(--grid)" stroke-width="1"/><text x="358.8" y="198" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">50</text><line x1="464.4" y1="32" x2="464.4" y2="182" stroke="var(--grid)" stroke-width="1"/><text x="464.4" y="198" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">75</text><line x1="570.0" y1="32" x2="570.0" y2="182" stroke="var(--grid)" stroke-width="1"/><text x="570.0" y="198" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">100</text><line x1="147.7" y1="32" x2="147.7" y2="182" stroke="var(--axis)" stroke-width="1.5"/><text x="139.7" y="51.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Response (%)</text><rect class="mark" x="147.7" y="36.0" width="244.9" height="10" rx="4" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Response (%) · Sertraline: 58</title></rect><text x="398.6" y="43.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">58</text><rect class="mark" x="147.7" y="48.0" width="143.6" height="10" rx="4" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Response (%) · Placebo: 34</title></rect><text x="297.3" y="55.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">34</text><text x="139.7" y="87.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Remission (%)</text><rect class="mark" x="147.7" y="72.0" width="173.2" height="10" rx="4" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Remission (%) · Sertraline: 41</title></rect><text x="326.8" y="79.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">41</text><rect class="mark" x="147.7" y="84.0" width="92.9" height="10" rx="4" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Remission (%) · Placebo: 22</title></rect><text x="246.6" y="91.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">22</text><text x="139.7" y="123.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Discontinuation (%)</text><rect class="mark" x="147.7" y="108.0" width="25.3" height="10" rx="4" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Discontinuation (%) · Sertraline: 6</title></rect><text x="179.0" y="115.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">6</text><rect class="mark" x="147.7" y="120.0" width="16.9" height="10" rx="4" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Discontinuation (%) · Placebo: 4</title></rect><text x="170.6" y="127.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">4</text><text x="139.7" y="159.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Nausea (%)</text><rect class="mark" x="147.7" y="144.0" width="76.0" height="10" rx="4" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Nausea (%) · Sertraline: 18</title></rect><text x="229.7" y="151.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">18</text><rect class="mark" x="147.7" y="156.0" width="38.0" height="10" rx="4" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Nausea (%) · Placebo: 9</title></rect><text x="191.7" y="163.0" font-size="11" text-anchor="start" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">9</text><rect x="147.7" y="7.0" width="12" height="12" rx="3" fill="var(--series-1)"/><text x="164.7" y="17.0" font-size="12" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Sertraline</text><rect x="249.9" y="7.0" width="12" height="12" rx="3" fill="var(--series-2)"/><text x="266.9" y="17.0" font-size="12" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Placebo</text></svg>
+        <details><summary>Ver dados</summary><table class='data'><thead><tr><th></th><th>Sertraline</th><th>Placebo</th></tr></thead><tbody><tr><th scope='row'>Response (%)</th><td>58</td><td>34</td></tr><tr><th scope='row'>Remission (%)</th><td>41</td><td>22</td></tr><tr><th scope='row'>Discontinuation (%)</th><td>6</td><td>4</td></tr><tr><th scope='row'>Nausea (%)</th><td>18</td><td>9</td></tr></tbody></table></details>
+      </div>
+      <div class="card chart-card">
+        <h3>Dados da Tabela 2</h3>
+        <div class="src">Fonte: Tabela 2</div>
+        <svg class="chart" viewBox="0 0 640 124" role="img" aria-label="Dados da Tabela 2" xmlns="http://www.w3.org/2000/svg"><rect x="87.2" y="7.0" width="12" height="12" rx="3" fill="var(--series-1)"/><text x="104.2" y="17.0" font-size="12" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Baseline</text><rect x="176.0" y="7.0" width="12" height="12" rx="3" fill="var(--series-2)"/><text x="193.0" y="17.0" font-size="12" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Week 12</text><line x1="87.2" y1="34" x2="87.2" y2="102" stroke="var(--grid)"/><text x="87.2" y="118" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">0</text><line x1="215.4" y1="34" x2="215.4" y2="102" stroke="var(--grid)"/><text x="215.4" y="118" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">6.25</text><line x1="343.6" y1="34" x2="343.6" y2="102" stroke="var(--grid)"/><text x="343.6" y="118" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">12.5</text><line x1="471.8" y1="34" x2="471.8" y2="102" stroke="var(--grid)"/><text x="471.8" y="118" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">18.75</text><line x1="600.0" y1="34" x2="600.0" y2="102" stroke="var(--grid)"/><text x="600.0" y="118" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">25</text><text x="79.2" y="59.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Sertraline</text><line x1="526.2" y1="55.0" x2="325.1" y2="55.0" stroke="var(--ink-3)" stroke-width="2"/><circle class="mark" cx="526.2" cy="55.0" r="6" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Sertraline · Baseline: 21.4</title></circle><circle class="mark" cx="325.1" cy="55.0" r="6" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Sertraline · Week 12: 11.6</title></circle><text x="536.2" y="59.0" font-size="11" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">-9.8</text><text x="79.2" y="89.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Placebo</text><line x1="520.0" y1="85.0" x2="403.1" y2="85.0" stroke="var(--ink-3)" stroke-width="2"/><circle class="mark" cx="520.0" cy="85.0" r="6" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Placebo · Baseline: 21.1</title></circle><circle class="mark" cx="403.1" cy="85.0" r="6" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"><title>Placebo · Week 12: 15.4</title></circle><text x="530.0" y="89.0" font-size="11" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">-5.7</text></svg>
+        <details><summary>Ver dados</summary><table class='data'><thead><tr><th></th><th>Baseline</th><th>Week 12</th></tr></thead><tbody><tr><th scope='row'>Sertraline</th><td>21.4</td><td>11.6</td></tr><tr><th scope='row'>Placebo</th><td>21.1</td><td>15.4</td></tr></tbody></table></details>
+      </div>
+      <div class="card chart-card">
+        <h3>OR (95% CI)</h3>
+        <div class="src">Fonte: Tabela 3 · OR (95% CI) (IC 95%)</div>
+        <svg class="chart" viewBox="0 0 640 140" role="img" aria-label="OR (95% CI)" xmlns="http://www.w3.org/2000/svg"><line x1="183.1" y1="16" x2="183.1" y2="118" stroke="var(--axis)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="120.8" y="134" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">0.21</text><text x="213.1" y="134" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">1.38</text><text x="305.4" y="134" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">2.55</text><text x="397.7" y="134" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">3.72</text><text x="490.0" y="134" font-size="11" text-anchor="middle" fill="var(--ink-3)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">4.89</text><text x="112.8" y="43.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Response</text><line x1="230.5" y1="39.0" x2="459.2" y2="39.0" stroke="var(--series-1)" stroke-width="2"/><rect class="mark" x="312.2" y="34.0" width="10" height="10" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Response: 2.7 (1.6 – 4.5)</title></rect><text x="502.0" y="43.0" font-size="11" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">2.7 (1.6 – 4.5)</text><text x="112.8" y="73.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Remission</text><line x1="222.6" y1="69.0" x2="435.6" y2="69.0" stroke="var(--series-1)" stroke-width="2"/><rect class="mark" x="296.5" y="64.0" width="10" height="10" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Remission: 2.5 (1.5 – 4.2)</title></rect><text x="502.0" y="73.0" font-size="11" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">2.5 (1.5 – 4.2)</text><text x="112.8" y="103.0" font-size="12" text-anchor="end" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">Discontinuation</text><line x1="151.6" y1="99.0" x2="411.9" y2="99.0" stroke="var(--series-1)" stroke-width="2"/><rect class="mark" x="217.6" y="94.0" width="10" height="10" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"><title>Discontinuation: 1.5 (0.6 – 3.9)</title></rect><text x="502.0" y="103.0" font-size="11" fill="var(--ink-2)" font-family="system-ui, -apple-system, Segoe UI, sans-serif">1.5 (0.6 – 3.9)</text></svg>
+        <details><summary>Ver dados</summary><table class='data'><thead><tr><th></th><th>OR (95% CI)</th></tr></thead><tbody><tr><th scope='row'>Response</th><td>2.7</td></tr><tr><th scope='row'>Remission</th><td>2.5</td></tr><tr><th scope='row'>Discontinuation</th><td>1.5</td></tr></tbody></table></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid three">
+      <div class="card">
+        <h2>Mensagens para levar</h2>
+        <ul class="list big"><li>Sertraline is superior to placebo for late-life depression treated in primary care and is well tolerated.</li><li>Longer trials should evaluate relapse prevention and outcomes in patients with cognitive impairment.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Implicações clínicas</h2>
+        <ul class="list"><li>Sertraline produced a clinically meaningful reduction in depressive symptoms compared with placebo in older primary care patients.</li><li>In clinical practice, the results support sertraline as a first-line option for late-life depression when psychotherapy is unavailable.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Limitações</h2>
+        <ul class="list"><li>Limitations include the exclusion of patients with dementia, which limits generalizability, and the relatively short 12-week follow-up.</li></ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="card reference">
+      <h2>Referência</h2>
+      <div class="cite">Ana Beatriz Moreira, Carlos Eduardo Lima, Fernanda Ribeiro Santos, João Pedro Almeida. Sertraline versus placebo for late-life depression in primary care: a 12-week randomized controlled trial. Journal of Affective Disorders. 2024. doi:10.1016/j.jad.2024.00001</div>
+<p><a href="https://doi.org/10.1016/j.jad.2024.00001">https://doi.org/10.1016/j.jad.2024.00001</a></p>    </div>
+  </section>
+
+
+  <footer>
+    Infográfico gerado automaticamente em 2026-09-04 00:59 · síntese: heuristic · Docling<br>
+    Resumo automatizado para apoio ao estudo. Confira os valores no artigo original antes de citar ou aplicar clinicamente.
+  </footer>
+</div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  document.querySelectorAll('.mark').forEach(function (el) {
+    var title = el.querySelector('title');
+    if (!title) return;
+    var text = title.textContent;
+    el.addEventListener('mousemove', function (e) {
+      tip.textContent = text; tip.style.display = 'block';
+      tip.style.left = (e.clientX + 12) + 'px'; tip.style.top = (e.clientY + 12) + 'px';
+    });
+    el.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+  });
+  var root = document.documentElement;
+  var btn = document.getElementById('theme');
+  try { var saved = localStorage.getItem('infographic-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('infographic-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
