@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720">
+  <rect width="900" height="720" rx="36" fill="#f5f3ff"/>
+  <g font-family="Sora, sans-serif" font-weight="700" font-size="46" fill="#140f24" text-anchor="middle">
+    <rect x="150" y="60" width="600" height="140" rx="28" fill="#ede9fe" stroke="#a78bfa" stroke-width="4"/>
+    <text x="450" y="148">1 · RESPOSTA CURTA</text>
+    <rect x="150" y="290" width="600" height="140" rx="28" fill="#cffafe" stroke="#22d3ee" stroke-width="4"/>
+    <text x="450" y="378">2 · UM EXEMPLO</text>
+    <rect x="150" y="520" width="600" height="140" rx="28" fill="#ede9fe" stroke="#a78bfa" stroke-width="4"/>
+    <text x="450" y="608">3 · PRÓXIMO PASSO</text>
+  </g>
+  <g stroke="#140f24" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M450 210 V275 M432 258 L450 276 L468 258"/>
+    <path d="M450 440 V505 M432 488 L450 506 L468 488"/>
+  </g>
+</svg>

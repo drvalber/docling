@@ -1,0 +1,4 @@
+versao;arquivo;variavel_alterada;destino;hipotese;status
+[CAMPANHA]-A-base;entregas/[CAMPANHA]-A-base.mp4;nenhuma (base);[CANAL];referência para comparação;
+[CAMPANHA]-B-titulo;entregas/[CAMPANHA]-B-titulo.mp4;título da abertura;[CANAL];[O QUE QUERO TESTAR];
+[CAMPANHA]-C-nova-fala;entregas/[CAMPANHA]-C-nova-fala.mp4;fala de abertura;[CANAL];[O QUE QUERO TESTAR];

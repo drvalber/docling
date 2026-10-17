@@ -1,0 +1,26 @@
+{
+  "name": "maquina-edicao-ia-projeto",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projeto Remotion para edição de vídeos com IA (método Máquina de Edição IA).",
+  "type": "module",
+  "scripts": {
+    "previa": "remotion studio",
+    "verificar": "tsc --noEmit",
+    "transcrever": "node scripts/transcrever.mjs",
+    "teste": "remotion render TesteInicial ../entregas/teste-inicial.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "@remotion/fonts": "4.0.536",
+    "@remotion/install-whisper-cpp": "4.0.536",
+    "@remotion/media-parser": "4.0.536",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,10 @@
+# Mídia pesada fica fora do Git (mantenha backup próprio).
+originais/*
+!originais/LEIA-ME.md
+entregas/*
+!entregas/LEIA-ME.md
+projeto/public/originais/*
+!projeto/public/originais/.gitkeep
+*.mp4
+*.mov
+*.wav
